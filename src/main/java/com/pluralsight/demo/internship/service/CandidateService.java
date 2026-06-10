@@ -44,6 +44,18 @@ public class CandidateService {
                 .collect(Collectors.toList());
     }
 
+    public List<Candidate> searchByName(String candidateName){
+        return candidateRepository.findAll().stream()
+                .filter(c -> c.getName().toLowerCase().contains(candidateName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Candidate> getCandidateByEmail(String email){
+        return candidateRepository.findAll().stream()
+                .filter(c -> c.getEmail().toLowerCase().contains(email.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
     public void deleteCandidate(Long id) {
         candidateRepository.deleteById(id);
     }
