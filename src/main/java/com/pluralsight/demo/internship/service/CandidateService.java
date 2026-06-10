@@ -50,21 +50,24 @@ public class CandidateService {
     }
 
     public List<Candidate> getCandidatesByFieldOfStudy(String fieldOfStudy){
-        return candidateRepository.findAll().stream()
-                .filter(c -> c.getFieldOfStudy().equalsIgnoreCase(fieldOfStudy))
-                .collect(Collectors.toList());
+//        return candidateRepository.findAll().stream()
+//                .filter(c -> c.getFieldOfStudy().equalsIgnoreCase(fieldOfStudy))
+//                .collect(Collectors.toList());
+        return candidateRepository.findByFieldOfStudyContainingIgnoreCase(fieldOfStudy);
     }
 
     public List<Candidate> searchByName(String candidateName){
-        return candidateRepository.findAll().stream()
-                .filter(c -> c.getName().toLowerCase().contains(candidateName.toLowerCase()))
-                .collect(Collectors.toList());
+//        return candidateRepository.findAll().stream()
+//                .filter(c -> c.getName().toLowerCase().contains(candidateName.toLowerCase()))
+//                .collect(Collectors.toList());
+        return candidateRepository.findByNameContainingIgnoreCase(candidateName);
     }
 
     public List<Candidate> getCandidateByEmail(String email){
-        return candidateRepository.findAll().stream()
-                .filter(c -> c.getEmail().toLowerCase().contains(email.toLowerCase()))
-                .collect(Collectors.toList());
+//        return candidateRepository.findAll().stream()
+//                .filter(c -> c.getEmail().toLowerCase().contains(email.toLowerCase()))
+//                .collect(Collectors.toList());
+        return candidateRepository.findByEmailContainingIgnoreCase(email);
     }
 
     public void deleteCandidate(Long id) {
